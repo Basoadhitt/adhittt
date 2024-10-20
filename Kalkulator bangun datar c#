@@ -1,0 +1,87 @@
+using System;
+
+class KalkulatorBangunDatar
+{
+    static void Main(string[] args)
+    {
+        while (true)
+        {
+            Console.WriteLine("Memilih bangun datar:");
+            Console.WriteLine("1. Lingkaran");
+            Console.WriteLine("2. Persegi");
+            Console.WriteLine("3. Segitiga");
+            Console.Write("Masukkan pilihan (1/2/3): ");
+            int pilihan = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Memilih perhitungan:");
+            Console.WriteLine("1. Luas");
+            Console.WriteLine("2. Keliling");
+            Console.WriteLine("3. Luas dan Keliling");
+            Console.Write("Masukkan pilihan (1/2/3): ");
+             int perhitungan = Convert.ToInt32(Console.ReadLine());
+
+            switch (pilihan)
+            {
+                
+                
+                case 1: // Lingkaran
+                double r,luas1,keliling1;
+                        Console.Write("Masukkan jari-jari lingkaran: ");
+                        r = Convert.ToDouble(Console.ReadLine());
+                        luas1 = 3.14*r*r;
+                        keliling1 = 2*3.14*r;
+                    if (perhitungan == 1 || perhitungan == 3)
+                        Console.WriteLine($"Luas: {luas1} cm^2");
+                    if (perhitungan == 2 || perhitungan == 3)
+                        Console.WriteLine($"Keliling: {keliling1} cm");
+                    break;
+
+                case 2: // Persegi
+                double sisi,luas2,keliling2;
+                    Console.WriteLine("Masukkan panjang sisi persegi: ");
+                        sisi = Convert.ToDouble(Console.ReadLine());
+                        luas2= sisi*sisi;
+                        keliling2= 4*sisi;
+                    if (perhitungan == 1 || perhitungan == 3)
+                        Console.WriteLine($"Luas: {luas2} cm^2");
+                    if (perhitungan == 2 || perhitungan == 3)
+                        Console.WriteLine($"Keliling: {4 * sisi} cm");
+                    break;
+
+                case 3: // Segitiga
+                double alas,tinggi,luas3,keliling3;
+                    if (perhitungan == 1 || perhitungan == 3)
+                    {
+                        // Hanya meminta input alas dan tinggi jika menghitung luas
+                        Console.WriteLine("Masukkan alas segitiga: ");
+                        alas = Convert.ToDouble(Console.ReadLine());
+                        Console.Write("Masukkan tinggi segitiga: ");
+                        tinggi = Convert.ToDouble(Console.ReadLine());
+                        luas3= 0.5*(alas*tinggi);
+                        Console.WriteLine($"Luas : {luas3} cm^2");
+                    }
+                    
+                    if (perhitungan == 2 || perhitungan == 3)
+                    {
+                        // Hanya meminta input sisi-sisi jika menghitung keliling
+                        Console.Write("Masukkan ketiga sisi segitiga (dipisahkan spasi): ");
+                        string[] sisiSegitiga = Console.ReadLine().Split();
+                        double s1 = double.Parse(sisiSegitiga[0]);
+                        double s2 = double.Parse(sisiSegitiga[1]);
+                        double s3 = double.Parse(sisiSegitiga[2]);
+                        keliling3= s1+s2+s3;
+                        Console.WriteLine($"Keliling: {keliling3} cm");
+                    }
+                    break;
+
+                default:
+                    Console.WriteLine("Perintah tidak valid.");
+                    break;
+            }
+
+            Console.Write("Ingin menghitung lagi? (y/n): ");
+            if (Console.ReadLine().ToLower() != "y") break;
+        }
+    }
+}
+
